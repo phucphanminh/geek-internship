@@ -1,0 +1,27 @@
+1. DNS (Domain Name System) - user's browser: DNS chuyển đổi tên miền thành địa chỉ IP, cho phép trình duyệt của người dùng kết nối đến các máy chủ phù hợp.
+
+2. Load Balancer: Phân phối các yêu cầu từ người dùng tới nhiều máy chủ ứng dụng web, đảm bảo phân phối tải trọng đồng đều và ngăn ngừa quá tải trên một máy chủ đơn lẻ.
+
+3. Web App Server: Chứa logic ứng dụng và phục vụ nội dung động cho trình duyệt của người dùng, xử lý tương tác người dùng và tạo ra các phản hồi.
+
+4. Database: Lưu trữ và quản lý dữ liệu có cấu trúc được sử dụng bởi ứng dụng. Nó chứa thông tin người dùng, nội dung và dữ liệu khác.
+
+5. Caching Service: Lưu trữ dữ liệu thường xuyên truy cập trong bộ nhớ để giảm tải trên cơ sở dữ liệu và cải thiện thời gian phản hồi.
+
+6a. Job Queue: Quản lý các tác vụ không đồng bộ hoặc công việc cần được xử lý ở nền, chẳng hạn như gửi email hoặc xử lý tệp do người dùng tải lên.
+
+6b. Job Servers: Các máy chủ xử lý các tác vụ trong hàng đợi công việc, đảm bảo thực hiện hiệu quả các tác vụ nền mà không ảnh hưởng đến hiệu suất ứng dụng chính.
+
+7. Full Text Service: Cung cấp khả năng tìm kiếm mạnh mẽ bằng cách chỉ mục và tìm kiếm thông qua toàn bộ văn bản của tài liệu hoặc dữ liệu.
+
+8. Services: Có thể đề cập đến các dịch vụ phía sau khác nhau xử lý các nhiệm vụ hoặc chức năng cụ thể trong ứng dụng, chẳng hạn như xác thực, xử lý thanh toán, v.v.
+
+9a. Data "Firehose": Luồng liên tục của dữ liệu từ các nguồn khác nhau, thường được sử dụng cho phân tích thời gian thực hoặc giám sát.
+
+9b. Copy of Data: Bản sao của dữ liệu gốc có thể được sử dụng cho báo cáo, phân tích hoặc mục đích sao lưu mà không ảnh hưởng đến nguồn dữ liệu chính.
+
+9c. Data Warehouse: Kho lưu trữ tập trung để lưu trữ và phân tích khối lượng lớn dữ liệu, cho phép truy vấn phức tạp và hoạt động trí tuệ doanh nghiệp (Business Intelligence).
+
+10. Cloud Storage: Giải pháp lưu trữ linh hoạt và có khả năng mở rộng để lưu trữ tệp, hình ảnh và các loại dữ liệu khác. Có thể truy cập dễ dàng từ nhiều vị trí khác nhau.
+
+11. CDN (Content Delivery Network): Phân phối tài sản tĩnh như hình ảnh, video và tệp đến các máy chủ phân phối địa lý, giảm độ trễ và cải thiện trải nghiệm người dùng bằng cách cung cấp nội dung từ máy chủ gần người dùng hơn.
