@@ -1,52 +1,49 @@
 const db = require('../database');
 
-exports.makePurchase = (req, res) => {
+exports.makePurchase = async (req, res) => {
   const { userId, storeId, productQuantities, voucherId, purchaseAddress } = req.body;
-
-  db.query(`CALL MakePurchaseWithVoucher('${userId}', '${storeId}', '${productQuantities}', '${voucherId}', '${purchaseAddress}')`, (err, results) => {
-    if (err) {
-      res.status(500).json({ error: err.message });
-    } else {
-      res.json({ message: 'Purchase successfully made.' });
-    }
-  });
+//   console.log(req.body);
+  try {
+    const results = await db.promise().query(`CALL MakePurchaseWithVoucher('${userId}', '${storeId}', '${productQuantities}', '${voucherId}', '${purchaseAddress}')`);
+    res.json({ message: 'Purchase successfully made.' });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: err.message });
+  }
 };
 
-exports.getMonthlySalesSummary = (req, res) => {
+exports.getMonthlySalesSummary = async (req, res) => {
   const year = req.params.year;
   const month = req.params.month;
 
-  db.query(`CALL GetMonthlySalesSummary(${year}, ${month})`, (err, results) => {
-    if (err) {
-      res.status(500).json({ error: err.message });
-    } else {
-      res.json(results[0]);
-    }
-  });
+  try {
+    const [results] = await db.promise().query(`CALL GetMonthlySalesSummary(${year}, ${month})`);
+    res.json(results);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 };
 
-exports.getTopSellingProducts = (req, res) => {
+exports.getTopSellingProducts = async (req, res) => {
   const year = req.params.year;
   const month = req.params.month;
 
-  db.query(`CALL GetTopSellingProducts(${year}, ${month})`, (err, results) => {
-    if (err) {
-      res.status(500).json({ error: err.message });
-    } else {
-      res.json(results[0]);
-    }
-  });
+  try {
+    const [results] = await db.promise().query(`CALL GetTopSellingProducts(${year}, ${month})`);
+    res.json(results);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 };
 
-exports.getUserPurchaseSummary = (req, res) => {
+exports.getUserPurchaseSummary = async (req, res) => {
   const year = req.params.year;
   const month = req.params.month;
 
-  db.query(`CALL GetUserPurchaseSummary(${year}, ${month})`, (err, results) => {
-    if (err) {
-      res.status(500).json({ error: err.message });
-    } else {
-      res.json(results[0]);
-    }
-  });
+  try {
+    const [results] = await db.promise().query(`CALL GetUserPurchaseSummary(${year}, ${month})`);
+    res.json(results);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 };

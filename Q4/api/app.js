@@ -6,7 +6,9 @@ const Routes = require('./routes/route');
 const app = express();
 const port = 3000; 
 
-// app.use(cors());
+// Sử dụng middleware cors trước khi sử dụng các routes
+app.use(cors());
+app.use(express.json()); 
 
 // Sử dụng các routes
 app.use('/', Routes);
