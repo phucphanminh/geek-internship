@@ -1,23 +1,21 @@
 const express = require('express');
-const mysql = require('mysql2');
+const db = require('./database.js');
 const cors = require('cors');
 const Routes = require('./routes/route');
 
 const app = express();
 const port = 3000; 
 
-app.use(cors());
-
-const db = mysql.createConnection({
-  host: 'localhost', 
-  user: 'root', 
-  password: '', 
-  database: 'geekinternship'
-});
+// app.use(cors());
 
 // Sử dụng các routes
 app.use('/', Routes);
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+//connect to DB
+db.connect((error) => {
+    if (error) return console.log(error);
+    console.log("Connect to DB success");
+    app.listen(port, () => {
+        console.log(`Server is running on http://localhost:${port}`);
+    });
 });
